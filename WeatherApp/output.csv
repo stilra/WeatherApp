@@ -1,0 +1,7 @@
+Aggregate,Average,Maximum,Minimum,Median,LaunchDayValue
+Temperature,27.87,32,0,30.00,27
+Wind,6.93,15,2,5.00,2
+Humidity,35.33,80,15,60.00,25
+Precipitation,8.00,40,0,20.00,0
+Lightning,,,,,No
+Clouds,,,,,Cumulus
