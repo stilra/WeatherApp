@@ -9,11 +9,11 @@ namespace WeatherApp
 			int launchDay = -1;
 			try
 			{
-				UserData userData = new UserData("/Users/stiliyanraev/Projects/WeatherApp/WeatherApp/test.csv", "test@abv.bg", "test", "recipient@abv.bg");
+				// UserData userData = new UserData();
 				// UI.GetUserData(userData);
-				var testUserData = new UserData();
+				UserData testUserData = new UserData("/Users/stiliyanraev/Projects/WeatherApp/WeatherApp/test.csv", "sender@testing.com", "", "recipient@testing.com");
 
-				var table = CSVReader.ReadCSV(userData.inputCSVFilepath);
+				var table = CSVReader.ReadCSV(testUserData.inputCSVFilepath);
 				var days = DayBuilder.BuildDays(table);
 
 				launchDay = LaunchDayCalculator.CalculateLaunchDay(days);
@@ -30,7 +30,8 @@ namespace WeatherApp
 
 				var sb = new StringBuilder();
 				var emailBody = sb.AppendFormat($"The most appropriate launch day is {launchDay}.\nFind attached a CSV file with the aggregated values.\n").ToString();
-				EmailSender.SendEmail("sender@testing.com", "", "receiver@testing.com", "Weather App Result", emailBody, outputCSVFilepath);
+
+				EmailSender.SendEmail(testUserData.senderEmail, testUserData.password, testUserData.recipientEmail, "Weather App Result", emailBody, outputCSVFilepath);
 			}
 			catch(Exception exception)
 			{
